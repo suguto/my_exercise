@@ -59,3 +59,9 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+gem 'devise'
+gem 'pry-rails'
+gem 'kaminari'
+gem 'jquery-rails'
+gem 'enum_help'
