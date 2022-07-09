@@ -10,31 +10,36 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
 
+  devise_scope :customer do
+    post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   scope module: :public do
-    patch 'customers/withdraw'
+
+    patch 'customers/withdraw/:id' => 'customers#withdraw', as: 'withdraw'
     resources :customers, only: [:show, :edit, :update] do
-      
+
       get '/followings' => 'relationships#followings'
       get '/followers' => 'relationships#followers'
       resources :relationships, only: [:create, :destroy]
-      
+
     end
 
     resources :exercises do
-      
+
       resources :comments, only: [:create, :destroy]
-      
+
       resources :favorites, only: [:index, :create, :destroy]
 
     end
-    
+
     get '/ranking' => 'favorites#ranking'
-    
+
     resources :searches, only: [:index]
 
   end
 
-    namespace :admin do
+  namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
   end
 

@@ -1,2 +1,32 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="btn-wrapper container">
+  <div class="row">
+    <div class="col-12 mx-auto">
+      <h1>Edit profile</h1>
+    </div>
+    <div class="col-12 mx-auto">
+      <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
+        <table class="table">
+          <tr>
+            <th><%= image_tag @customer.get_profile_image(100, 100) %></th>
+            <td><%= f.file_field :profile_image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <th>名前</th>
+            <td><%= f.text_field :name, class: "form-control", placeholder: @customer.name %></td>
+          </tr>
+          <tr>
+            <th>自己紹介</th>
+            <td><%= f.text_area :introduction, class: "form-control", placeholder: @customer.introduction %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td class="text-right"><%= f.submit "保存する", class: "btn btn-sm btn-info" %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+    <div class="withdraw">
+      <%= link_to "退会する", withdraw_path(@customer), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-sm btn-danger" %>
+    </div>
+  </div>
+</div>
