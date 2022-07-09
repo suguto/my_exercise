@@ -1,0 +1,23 @@
+<div class="btn-wrapper col-10 mx-auto">
+  <div class="row">
+    <h1>マイページ</h1>
+    <table class="table">
+      <tr>
+        <th><%= image_tag @customer.get_profile_image(150, 100) %></th>
+        <% if @customer == current_customer %>
+          <% if @customer.name != "guest" %>
+            <td class="text-right"><%= link_to "Edit profole", edit_customer_path(current_customer), class: "btn btn-sm btn-success" %></td>
+          <% end %>
+        <% end %>
+      </tr>
+      <tr>
+        <th><strong><%= @customer.name %></strong></th>
+      </tr>
+      <tr>
+        <th><%= @customer.introduction %></th>
+      </tr>
+    </table>
+
+    <%# <%= render '/exercises/index', customer: @current_customer %>
+  </div>
+</div>
