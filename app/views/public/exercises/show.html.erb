@@ -1,2 +1,35 @@
-<h1>Public::Exercises#show</h1>
-<p>Find me in app/views/public/exercises/show.html.erb</p>
+<div class="btn-wrapper container">
+  <div class="row">
+    <div class="col-12 mx-auto">
+      <h1>投稿詳細</h1>
+    </div>
+    <div class="col-12 mx-auto">
+      <table class="table">
+        <tr>
+          <th>
+            <%= link_to customer_path(@exercise.customer_id) do %>
+              <%= image_tag @exercise.customer.get_profile_image(150, 150) %>
+            <% end %>
+          </th>
+          <th>
+            <%= link_to customer_path(@exercise.customer_id), class: "text-dark" do %>
+              <%= @exercise.customer.name %>
+            <% end %>
+          </th>
+          <td class="col-8"><p><%= link_to @exercise.body, exercise_path(@exercise), class: "text-secondary" %></p>
+            <% if @exercise.body_images.present? %>
+              <% @exercise.body_images.each do |images| %>
+                <%= image_tag @exercise.get_body_images(images, 100, 100) %>
+              <% end %>
+            <% end %>
+          </td>
+          <% if @exercise.customer_id == current_customer.id %>
+            <td><p><%= link_to "編集", edit_exercise_path(@exercise), class: "btn btn-sm btn-success" %></p>
+              <%= link_to "削除", exercise_path(@exercise), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "削除しますか？" %>
+            </td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

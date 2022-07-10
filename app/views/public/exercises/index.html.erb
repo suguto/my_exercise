@@ -1,2 +1,8 @@
-<h1>Public::Exercises#index</h1>
-<p>Find me in app/views/public/exercises/index.html.erb</p>
+<div class="btn-wrapper container">
+  <div class="row">
+    <div class="col-12 mx-auto">
+      <h1>投稿一覧</h1>
+    </div>
+    <%= render 'index', exercises: @exercises %>
+  </div>
+</div>

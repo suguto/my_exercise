@@ -1,2 +1,27 @@
-<h1>Public::Exercises#new</h1>
-<p>Find me in app/views/public/exercises/new.html.erb</p>
+<div class="btn-wrapper container">
+  <div class="row">
+    <div class="col-12 mx-auto">
+      <h1>新規投稿</h1>
+    </div>
+    <div class="col-12 mx-auto">
+      <%= form_with model: @exercise, url: exercises_path(@exercise), method: :post do |f| %>
+        <table class="table">
+          <tr>
+            <th><%= image_tag current_customer.get_profile_image(100, 100) %>
+                <strong><%= current_customer.name %></strong>
+            </th>
+          </tr>
+          <tr>
+            <th><%= f.text_area :body, class: "form-control", placeholder: "どんな運動や食事しましたか？" %></th>
+          </tr>
+          <tr>
+            <th><%= f.file_field :body_images, accept: "image/*", multiple: true %></th>
+          </tr>
+          <tr>
+            <th class="text-right"><%= f.submit "投稿する", class: "btn btn-sm btn-primary" %></th>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

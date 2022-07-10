@@ -25,7 +25,7 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   protected
-  #退会しているかどうかを判断するメソッド
+  #customerの状態を調べるメソッド
   def customer_state
     @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
@@ -34,14 +34,13 @@ class Public::SessionsController < Devise::SessionsController
       #available = 0 なのでイン出来ます
       if @customer.customer_style == "available"
 
-
         #quited = 1 で退会済みなのでインできません
       elsif @customer.customer_style == "quited"
         flash[:notice] = "新しく登録してください"
         redirect_to new_customer_registration_path
 
         #block = 2　なので、インできません
-        #customerが問題を起こした時に使います
+        #customerが問題を起こした時に管理者が使います
       else
         flash[:notice] = "blockされています"
         redirect_to root_path

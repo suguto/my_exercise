@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2022_07_07_040938) do
   create_table "exercises", force: :cascade do |t|
     t.integer "customer_id"
     t.text "body"
-    t.integer "body_image"
+    t.integer "body_images"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
