@@ -5,6 +5,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @exercises = current_customer.exercises.order(id: "DESC").page(params[:id]).per(10)
   end
 
   def edit
@@ -42,7 +43,7 @@ class Public::CustomersController < ApplicationController
 
     #他のcustomerの編集ページへ遷移できないようにする
     elsif
-      @customer.name != current_customer.name
+      @customer != current_customer
       redirect_to customer_path(current_customer)
     end
   end

@@ -6,7 +6,7 @@ class CreateExercises < ActiveRecord::Migration[6.1]
       #投稿内容を保存するカラム
       t.text :body
       #投稿画像を保存するカラム
-      t.integer :body_image
+      t.integer :body_images
 
       t.timestamps
     end
