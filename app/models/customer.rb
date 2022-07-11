@@ -8,6 +8,7 @@ class Customer < ApplicationRecord
 
   has_many :exercises, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :name, length: {in: 1..10}
   validates :introduction, length: {maximum: 300}
@@ -24,7 +25,7 @@ class Customer < ApplicationRecord
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/box3.jpg')
-      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      profile_image.attach(io: File.open(file_path), filename: 'box3.jpg', content_type: 'image/jpeg')
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end

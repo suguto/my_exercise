@@ -1,0 +1,21 @@
+<% if exercise.favorited_by?(current_customer) %>
+  <%= link_to exercise_favorites_path(exercise), class: "text-danger", method: :delete, remote: true do %>
+    <i class="fas fa-heart" color="red"></i>
+  <% end %>
+  <%= link_to exercise_favorites_all_path(exercise), class: "text-info" do %>
+    <% if exercise.favorites.count != 0 %>
+      <%= exercise.favorites.count %>筋肉
+    <% end %>
+  <% end %>
+
+
+<% else %>
+  <%= link_to exercise_favorites_path(exercise), class: "text-danger", method: :post, remote: true do %>
+    <i class="far fa-heart"></i>
+  <% end %>
+  <%= link_to exercise_favorites_all_path(exercise), class: "text-info" do %>
+    <% if exercise.favorites.count != 0 %>
+      <%= exercise.favorites.count %>筋肉
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,27 @@
+<div class="btn-wrapper container">
+  <div class="row">
+    <div class="col-12 mx-auto">
+      <h1>筋肉した一覧</h1>
+    </div>
+    <div class="col-12 mx-auto">
+      <% @favorites.each do |f| %>
+        <table class="table">
+          <tr>
+            <th class="col-2">
+              <%= link_to customer_path(f.customer), class: "text-dark" do %>
+                <%= image_tag f.customer.get_profile_image(100, 100) %>
+              <% end %>
+            </th>
+            <td><%= link_to customer_path(f.customer), class: "text-dark" do %>
+                  <p><strong><%= f.customer.name %></strong></p>
+                <% end %>
+                <%= f.customer.introduction %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+      <%= paginate @favorites %>
+    </div>
+  </div>
+</div>
+
