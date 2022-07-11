@@ -7,9 +7,15 @@
       <%= form_with model: @exercise, url: exercises_path(@exercise), method: :post do |f| %>
         <table class="table">
           <tr>
-            <th><%= image_tag current_customer.get_profile_image(100, 100) %>
+            <% if current_customer.profile_image.attached? %>
+              <th><%= image_tag current_customer.get_profile_image(100, 100) %>
                 <strong><%= current_customer.name %></strong>
-            </th>
+              </th>
+            <% else %>
+              <th><%= image_tag asset_path('/assets/box3.jpg'), size: "100x67" %>
+                <strong><%= current_customer.name %></strong>
+              </th>
+            <% end %>
           </tr>
           <tr>
             <th><%= f.text_area :body, class: "form-control", placeholder: "どんな運動や食事しましたか？" %></th>

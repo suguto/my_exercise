@@ -19,6 +19,9 @@
               <% end %>
             <% end %>
             </td>
+            <td id="favorite_buttons_<%= e.id %>">
+              <%= render 'public/favorites/favorite', exercise: e %>
+            </td>
             <% if e.customer_id == current_customer.id %>
             <td><p><%= link_to "編集", edit_exercise_path(e), class: "btn btn-sm btn-success" %></p>
                 <%= link_to "削除", exercise_path(e), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "削除しますか？" %>

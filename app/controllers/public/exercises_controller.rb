@@ -7,7 +7,7 @@ class Public::ExercisesController < ApplicationController
   end
 
   def index
-    @exercises = Exercise.all.order(id: "DESC").page(params[:id]).per(10)
+    @exercises = Exercise.all.order(id: "DESC").page(params[:page]).per(10)
   end
 
   def show

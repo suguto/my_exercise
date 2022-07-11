@@ -29,7 +29,8 @@ Rails.application.routes.draw do
 
       resources :comments, only: [:create, :destroy]
 
-      resources :favorites, only: [:index, :create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+      get 'favorites_all' => 'favorites#favorites_all', as: 'favorites_all'
 
     end
 

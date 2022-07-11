@@ -1,7 +1,7 @@
 <div class="btn-wrapper container">
   <div class="row">
     <div class="col-12 mx-auto">
-      <h1>マイページ</h1>
+      <h1><%= @customer.name %></h1>
     </div>
     <div class="col-12 mx-auto">
       <table class="table">
@@ -12,9 +12,6 @@
               <td class="text-right"><%= link_to "Edit profole", edit_customer_path(current_customer), class: "btn btn-sm btn-success" %></td>
             <% end %>
           <% end %>
-        </tr>
-        <tr>
-          <th><strong><%= @customer.name %></strong></th>
         </tr>
         <tr>
           <th><%= @customer.introduction %></th>
