@@ -6,11 +6,22 @@
     <div class="col-12 mx-auto">
       <table class="table">
         <tr>
-          <th><%= image_tag @customer.get_profile_image(150, 100) %></th>
+          <th><p><%= image_tag @customer.get_profile_image(150, 100) %></p>
+              <%= link_to customer_followings_path(@customer), class: "text-info" do %>
+                フォロー数<%= @customer.followings.count %>
+              <% end %>
+              <%= link_to customer_followers_path(@customer), class: "text-info" do %>
+                フォロワー数<%= @customer.followers.count %>
+              <% end %>
+          </th>
           <% if @customer == current_customer %>
             <% if @customer.name != "guest" %>
               <td class="text-right"><%= link_to "Edit profole", edit_customer_path(current_customer), class: "btn btn-sm btn-success" %></td>
             <% end %>
+          <% else %>
+              <td id="follow_buttons_<%= @customer.id %>">
+                <%= render 'public/relationships/follow_buttons', customer: @customer %>
+              </td>
           <% end %>
         </tr>
         <tr>

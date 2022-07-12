@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
       get '/followings' => 'relationships#followings'
       get '/followers' => 'relationships#followers'
-      resources :relationships, only: [:create, :destroy]
+      resource :relationships, only: [:create, :destroy]
 
     end
 
