@@ -10,6 +10,12 @@ class Customer < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  has_many :following_relationships, class_name: "Relationship", foreign_key: "follower_id"
+  has_many :followings, through: :following_relationships, source: :following
+
+  has_many :follower_relationships, class_name: "Relationship", foreign_key: "following_id"
+  has_many :followers, through: :follower_relationships, source: :follower
+
   validates :name, length: {in: 1..10}
   validates :introduction, length: {maximum: 300}
 
@@ -31,4 +37,20 @@ class Customer < ApplicationRecord
   end
   #customerの状態を表しています
   enum customer_style: { available: 0, quited: 1, block: 2}
+
+  #フォローするためのメソッド
+  def follow!(customer)
+    following_relationships.create!(following_id: customer.id)
+  end
+
+  #フォロー外すためのメソッド
+  def unfollow!(customer)
+    following_relationships.find_by!(following_id: customer.id).destroy!
+  end
+
+  #フォローしているかどうか判定するメソッド
+  def following?(customer)
+    followings.include?(customer)
+  end
+
 end

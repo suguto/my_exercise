@@ -5,7 +5,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @exercises = @customer.exercises.order(id: "DESC").page(params[:page]).per(10)
+    @exercises = @customer.exercises.order(id: "DESC").page(params[:page]).per(5)
   end
 
   def edit

@@ -1,2 +1,14 @@
-<h1>Public::Relationships#followings</h1>
-<p>Find me in app/views/public/relationships/followings.html.erb</p>
+<div class="btn-wrapper container">
+  <div class="row">
+    <div class="col-12 mx-auto">
+      <h1>フォロー一覧</h1>
+    </div>
+    <div class="col-12 mx-auto">
+      <% if @customer.followings.count == 0 %>
+        フォローしている人はいません
+      <% else %>  
+        <%= render 'public/relationships/customers_info', customers_info: @customers %>
+      <% end %>
+    </div>  
+  </div>
+</div>

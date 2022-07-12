@@ -3,7 +3,7 @@ class Public::FavoritesController < ApplicationController
 
   def favorites_all
     @exercises = Exercise.find(params[:exercise_id])
-    @favorites = @exercises.favorites.order(id: "DESC").page(params[:page]).per(10)
+    @favorites = @exercises.favorites.order(id: "DESC").page(params[:page]).per(5)
   end
 
   def ranking
