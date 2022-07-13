@@ -7,6 +7,7 @@
       <%= form_with model: @exercise, url: exercises_path(@exercise), method: :post do |f| %>
         <table class="table">
           <tr>
+            <%# 新規会員登録して最初に新規投稿ページに移動すると画像表示エラーが出るため、解決策としてif文で分岐しました %>
             <% if current_customer.profile_image.attached? %>
               <th><%= image_tag current_customer.get_profile_image(100, 100) %>
                 <strong><%= current_customer.name %></strong>

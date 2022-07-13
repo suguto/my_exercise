@@ -12,6 +12,7 @@ class Public::ExercisesController < ApplicationController
 
   def show
     @exercise = Exercise.find(params[:id])
+    @comment_new = Comment.new
   end
 
   def edit
