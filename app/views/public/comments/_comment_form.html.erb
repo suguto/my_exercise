@@ -1,0 +1,4 @@
+<%= form_with model: comment, local: false, url: exercise_comments_path(exercise), method: :post do |f| %>
+  <%= f.text_area :comment_to, class: "form-control" %>
+  <%= f.submit "コメントする", class: "btn btn-sm btn-success" %>
+<% end %>
