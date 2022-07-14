@@ -1,22 +1,22 @@
+<table class="table">
   <% customers_info.each do |f| %>
-    <table class="table">
-      <tr>
-        <th class="col-2">
-          <%= link_to customer_path(f), class: "text-dark" do %>
-            <%= image_tag f.get_profile_image(100, 100) %>
-          <% end %>
-        </th>
-        <td class="col-6"><%= link_to customer_path(f), class: "text-dark" do %>
+    <tr>
+      <th class="col-2">
+        <%= link_to customer_path(f), class: "text-dark" do %>
+          <%= image_tag f.get_profile_image(100, 100) %>
+        <% end %>
+      </th>
+      <td class="col-6"><%= link_to customer_path(f), class: "text-dark" do %>
               <p><strong><%= f.name %></strong></p>
-            <% end %>
-            <%= f.introduction %>
-        </td>
-        <% if f != current_customer %>
+                        <% end %>
+                        <%= f.introduction %>
+      </td>
+      <% if f != current_customer %>
         <td id="follow_buttons_<%= f.id %>">
           <%= render 'public/relationships/follow_buttons', customer: f %>
         </td>
-        <% end %>
-      </tr>
-    </table>
+      <% end %>
+    </tr>
   <% end %>
-  <%= paginate customers_info %>
+</table>
+<%= paginate customers_info %>
