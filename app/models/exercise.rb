@@ -28,4 +28,15 @@ class Exercise < ApplicationRecord
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end
+
+  #検索方法の分岐メソッド
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @exercise = Exercise.where("body LIKE?","#{word}")
+    elsif search == "partial_match"
+      @exercise = Exercise.where("body LIKE?","%#{word}%")
+    else
+      @exercise = Exercise.all
+    end
+  end
 end

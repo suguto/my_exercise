@@ -1,2 +1,23 @@
-<h1>Public::Searches#index</h1>
-<p>Find me in app/views/public/searches/index.html.erb</p>
+<div class="btn-wrapper container">
+  <div class="row">
+    <div class="col-12 mx-auto">
+      <h1>検索結果</h1>
+    </div>
+    <div class="col-12 mx-auto">
+      <p><%= @word %>の検索結果</p>
+      <% if @range == "ユーザー名" %>
+        <% if @customers.count == 0 %>
+          <p>見つかりませんでした。</p>
+        <% else %>
+          <%= render 'public/relationships/customers_info', customers_info: @customers %>
+        <% end %>
+    </div>
+      <% else %>
+        <% if @exercises.count == 0 %>
+          <p>見つかりませんでした。</p>
+        <% else %>
+          <%= render 'public/exercises/index', exercises: @exercises %>
+        <% end %>
+      <% end %>
+  </div>
+</div>
