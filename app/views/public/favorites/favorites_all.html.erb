@@ -4,28 +4,7 @@
       <h1>筋肉した一覧</h1>
     </div>
     <div class="col-12 mx-auto">
-      <% @favorites.each do |f| %>
-        <table class="table">
-          <tr>
-            <th class="col-1">
-              <%= link_to customer_path(f.customer), class: "text-dark" do %>
-                <%= image_tag f.customer.get_profile_image(100, 100) %>
-              <% end %>
-            </th>
-            <td class="col-6"><%= link_to customer_path(f.customer), class: "text-dark" do %>
-                  <p><strong><%= f.customer.name %></strong></p>
-                <% end %>
-                <%= f.customer.introduction %>
-            </td>
-            <% if f.customer != current_customer %>
-              <td id="follow_buttons_<%= f.customer.id %>">
-                <%= render 'public/relationships/follow_buttons', customer: f.customer %>
-              </td>
-            <% end %>
-          </tr>
-        </table>
-      <% end %>
-      <%= paginate @favorites %>
+        <%= render 'public/relationships/customers_info', customers_info: @customers %>
     </div>
   </div>
 </div>

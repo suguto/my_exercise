@@ -9,7 +9,7 @@ class Public::CommentsController < ApplicationController
     else
       flash[:notice] = "入力してください"
       @comment_new = Comment.new
-      render 'public/exercises/show'
+      redirect_to exercise_path(@exercise)
     end
   end
 

@@ -19,6 +19,10 @@ class Customer < ApplicationRecord
   validates :name, length: {in: 1..10}
   validates :introduction, length: {maximum: 300}
 
+  #customerの状態を表しています
+  enum customer_style: { available: 0, quited: 1, block: 2}
+
+
   #guestログインするためのメソッド
   def self.guest
     find_or_create_by!(name: 'guest' ,email: 'guest@example.com') do |guest|
@@ -35,8 +39,6 @@ class Customer < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-  #customerの状態を表しています
-  enum customer_style: { available: 0, quited: 1, block: 2}
 
   #フォローするためのメソッド
   def follow!(customer)

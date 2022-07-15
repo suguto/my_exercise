@@ -7,7 +7,10 @@ class Public::ExercisesController < ApplicationController
   end
 
   def index
-    @exercises = Exercise.all.order(id: "DESC").page(params[:page]).per(10)
+    customer_ids = Customer.all.pluck(:id)
+    @exercises = Exercise.where(customer_id: customer_ids).order(id: "DESC").page(params[:page]).per(10)
+    #user_ids = current_user.followings.pluck(:id)
+    #@articles = Article.where(user_id:user_ids)
   end
 
   def show
@@ -17,6 +20,11 @@ class Public::ExercisesController < ApplicationController
 
   def edit
     @exercise = Exercise.find(params[:id])
+  end
+
+  def timeline
+    customer_ids = current_customer.followings.pluck(:id)
+    @exercises = Exercise.where(customer_id: customer_ids).order(id: "DESC").page(params[:page]).per(5)
   end
 
   def create
