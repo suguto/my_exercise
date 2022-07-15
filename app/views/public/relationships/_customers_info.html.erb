@@ -1,19 +1,19 @@
 <table class="table">
-  <% customers_info.each do |f| %>
+  <% customers_info.each do |c| %>
     <tr>
       <th class="col-2">
-        <%= link_to customer_path(f), class: "text-dark" do %>
-          <%= image_tag f.get_profile_image(100, 100) %>
+        <%= link_to customer_path(c), class: "text-dark" do %>
+          <%= image_tag c.get_profile_image(100, 100) %>
         <% end %>
       </th>
-      <td class="col-6"><%= link_to customer_path(f), class: "text-dark" do %>
-              <p><strong><%= f.name %></strong></p>
+      <td class="col-6"><%= link_to customer_path(c), class: "text-dark" do %>
+              <p><strong><%= c.name %></strong></p>
                         <% end %>
-                        <%= f.introduction %>
+                        <%= c.introduction %>
       </td>
-      <% if f != current_customer %>
-        <td id="follow_buttons_<%= f.id %>">
-          <%= render 'public/relationships/follow_buttons', customer: f %>
+      <% if c != current_customer %>
+        <td id="follow_buttons_<%= c.id %>">
+          <%= render 'public/relationships/follow_buttons', customer: c %>
         </td>
       <% end %>
     </tr>

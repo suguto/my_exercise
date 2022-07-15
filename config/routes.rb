@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
 
     end
-
+    get '/timeline' => 'exercises#timeline'
     resources :exercises do
 
       resources :comments, only: [:create, :destroy]
@@ -41,7 +41,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :customers, only: [:index, :show, :edit, :update]
+    get '/searches' => 'customers#searches'
+    resources :customers, only: [:index, :show, :update]
   end
 
   root to: 'homes#top'
