@@ -7,10 +7,11 @@ class Public::ExercisesController < ApplicationController
   end
 
   def index
+    @index = true
     customer_ids = Customer.all.pluck(:id)
     @exercises = Exercise.where(customer_id: customer_ids).order(id: "DESC").page(params[:page]).per(10)
-    #user_ids = current_user.followings.pluck(:id)
-    #@articles = Article.where(user_id:user_ids)
+    followings_ids = current_customer.followings.pluck(:id)
+    @exercise_timeline = Exercise.where(customer_id: followings_ids).order(id: "DESC").page(params[:page]).per(10)
   end
 
   def show
@@ -22,18 +23,12 @@ class Public::ExercisesController < ApplicationController
     @exercise = Exercise.find(params[:id])
   end
 
-  def timeline
-    customer_ids = current_customer.followings.pluck(:id)
-    @exercises = Exercise.where(customer_id: customer_ids).order(id: "DESC").page(params[:page]).per(5)
-  end
-
   def create
     @exercise = current_customer.exercises.new(exercise_params)
     if @exercise.save
       redirect_to exercises_path
     else
-      flash[:notice] = "1文字以上、写真は4枚以下にしてください"
-      render 'new'
+      render :new
     end
   end
 
@@ -42,8 +37,7 @@ class Public::ExercisesController < ApplicationController
     if @exercise.update(exercise_params)
       redirect_to exercises_path
     else
-      flash[:notice] = "1文字以上、写真は4枚以下にしてください"
-      redirect_to edit_exercise_path(@exercise)
+      redirect_to edit_exercise_path(@exercise), notice: '1文字以上、画像は4枚までです。'
     end
   end
 

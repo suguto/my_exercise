@@ -2,13 +2,15 @@ class Public::RelationshipsController < ApplicationController
   before_action :authenticate_customer!
 
   def followings
+    @index = true
     @customer = Customer.find(params[:customer_id])
-    @customers = @customer.followings.order(id: "DESC").page(params[:page]).per(5)
+    @customers = @customer.followings.order(id: "DESC").page(params[:page]).per(10)
   end
 
   def followers
+    @index = true
     @customer = Customer.find(params[:customer_id])
-    @customers = @customer.followers.order(id: "DESC").page(params[:page]).per(5)
+    @customers = @customer.followers.order(id: "DESC").page(params[:page]).per(10)
   end
 
   def create

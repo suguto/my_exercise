@@ -4,8 +4,11 @@ class Public::CustomersController < ApplicationController
 
 
   def show
+    @index = true
     @customer = Customer.find(params[:id])
     @exercises = @customer.exercises.order(id: "DESC").page(params[:page]).per(5)
+    exercise_ids = @customer.favorites.pluck(:exercise_id)
+    @favorites = Exercise.where(id: exercise_ids).order(id: "DESC").page(params[:page]).per(10)
   end
 
   def edit
@@ -17,7 +20,6 @@ class Public::CustomersController < ApplicationController
     if @customer.update(customer_params)
       redirect_to customer_path(current_customer)
     else
-      flash[:notice] = "名前は１～１０文字、自己紹介は３００文字までです"
       render 'edit'
     end
   end

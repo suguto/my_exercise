@@ -7,8 +7,8 @@ class Public::CommentsController < ApplicationController
     if @comment.save
       render 'exercise_show_comments'
     else
-      flash[:notice] = "入力してください"
       @comment_new = Comment.new
+      flash[:notice] = "コメントを入力してください"
       redirect_to exercise_path(@exercise)
     end
   end

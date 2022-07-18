@@ -1,8 +1,6 @@
 <div class="btn-wrapper container">
   <div class="row">
-    <div class="col-12 mx-auto">
-      <h1><%= @customer.name %></h1>
-    </div>
+    <h1><%= @customer.name %></h1>
     <div class="col-12 mx-auto">
       <table class="table">
         <tr>
@@ -29,6 +27,19 @@
         </tr>
       </table>
     </div>
-    <%= render 'public/exercises/index', exercises: @exercises %>
+  </div>
+  <div class="content">
+    <div class="tab-wrap">
+      <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">投稿一覧</label>
+      <div class="tab-content">
+        <%= render 'public/exercises/index', exercises: @exercises %>
+      </div>
+      <input id="tab02" type="radio" name="tab" class="tab-switch"><label class="tab-label" for="tab02">いいね一覧</label>
+        <div class="tab-content">
+        <div class="col-12 mx-auto">
+          <%= render 'public/exercises/index', exercises: @favorites %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

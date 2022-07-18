@@ -1,8 +1,8 @@
 <header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <h5 class="my-0 mr-md-auto font-weight-normal"><%= link_to "my_exercise", root_path, class: "text-warning" %></h5>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark" color="#7FFFD4">
+  <div class="header_title"><h5 class="my-0 mr-md-auto font-weight-normal"><%= link_to "my_exercise", root_path, class: "text-warning" %></h5></div>
   <% if customer_signed_in? %>
-    <div><%= render 'public/searches/search_form' %></div>
+    <div class="search"><%= render 'public/searches/search_form' %></div>
   <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,39 +11,38 @@
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
         <li class="nav-item">
-          <%= link_to 'exercise一覧', exercises_path, class: 'nav-link text-dark' %>
+          <div class="header-list"><%= link_to 'exercise一覧', exercises_path, class: 'nav-link text-primary text-right' %></div>
         </li>
         <li class="nav-item">
-          <%= link_to 'タイムライン', timeline_path, class: 'nav-link text-dark' %>
+          <div class="header-list"><%= link_to 'いいねランキング', ranking_path, class: 'nav-link text-primary text-right' %></div>
         </li>
         <li class="nav-item">
-          <%= link_to '筋肉ランキング', ranking_path, class: 'nav-link text-dark' %>
-        </li>
-
-        <li class="nav-item">
-          <%= link_to "新規投稿", new_exercise_path, class: 'nav-link text-dark' %>
+          <div class="header-list"><%= link_to "新規投稿", new_exercise_path, class: 'nav-link text-primary text-right' %></div>
         </li>
         <li class="nav-item">
-          <%= link_to 'マイページ', customer_path(current_customer), class: 'nav-link text-dark' %>
+          <div class="header-list"><%= link_to 'マイページ', customer_path(current_customer), class: 'nav-link text-primary text-right' %></div>
         </li>
         <li class="nav-item">
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
+          <div class="header-list"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-primary text-right' %></div>
         </li>
 
         <% elsif admin_signed_in? %>
         <li class="nav-item">
-          <%= link_to "ユーザー一覧", admin_customers_path, class: 'nav-link text-dark' %>
+          <div class="header-list"><%= link_to "ユーザー一覧", admin_customers_path, class: 'nav-link primary text-right' %></div>
         </li>
         <li class="nav-item">
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
+          <div class="header-list"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-primary text-right' %></div>
         </li>
 
         <% else %>
         <li class="nav-item">
-          <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
+          <div class="header-list"><%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-primary text-right' %></div>
         </li>
         <li class="nav-item">
-          <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>
+          <div class="header-list"><%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-primary text-right' %></div>
+        </li>
+        <li class="nav-item">
+          <div class="header-list"><%= link_to 'ゲストログイン', public_guest_sign_in_path, class: 'nav-link text-primary text-right', method: :post %></div>
         </li>
         <% end %>
         </ul>

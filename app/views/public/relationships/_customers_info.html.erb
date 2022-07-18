@@ -1,22 +1,25 @@
-<table class="table">
-  <% customers_info.each do |c| %>
-    <tr>
-      <th class="col-2">
-        <%= link_to customer_path(c), class: "text-dark" do %>
-          <%= image_tag c.get_profile_image(100, 100) %>
-        <% end %>
-      </th>
-      <td class="col-6"><%= link_to customer_path(c), class: "text-dark" do %>
-              <p><strong><%= c.name %></strong></p>
-                        <% end %>
-                        <%= c.introduction %>
-      </td>
-      <% if c != current_customer %>
-        <td id="follow_buttons_<%= c.id %>">
-          <%= render 'public/relationships/follow_buttons', customer: c %>
+<div class="content">
+  <table class="table">
+    <% customers_info.each do |c| %>
+      <tr>
+        <th class="col-2">
+          <%= link_to customer_path(c), class: "text-dark" do %>
+            <%= image_tag c.get_profile_image(100, 100) %>
+          <% end %>
+        </th>
+        <td class="col-6">
+          <%= link_to customer_path(c), class: "text-dark" do %>
+            <p><strong><%= c.name %></strong></p>
+          <% end %>
+          <%= c.introduction %>
         </td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+        <% if c != current_customer %>
+          <td id="follow_buttons_<%= c.id %>">
+            <%= render 'public/relationships/follow_buttons', customer: c %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
 <%= paginate customers_info %>

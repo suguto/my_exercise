@@ -24,7 +24,6 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
 
     end
-    get '/timeline' => 'exercises#timeline'
     resources :exercises do
 
       resources :comments, only: [:create, :destroy]
