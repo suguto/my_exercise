@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      customer: ユーザー
+    attributes:
+      customer:
+        name: 名前
+        introduction: 自己紹介
+      exercise:
+        body: 投稿内容
+        body_images: 投稿画像
+      comment:
+        comment_to: コメント

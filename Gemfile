@@ -65,3 +65,8 @@ gem 'pry-rails'
 gem 'kaminari'
 gem 'jquery-rails'
 gem 'enum_help'
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
+
