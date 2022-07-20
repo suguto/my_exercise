@@ -2,7 +2,6 @@ class Public::SearchesController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @index = true
     @range = params[:range]
     @word = params[:word]
 

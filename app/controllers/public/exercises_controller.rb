@@ -7,7 +7,6 @@ class Public::ExercisesController < ApplicationController
   end
 
   def index
-    @index = true
     customer_ids = Customer.all.pluck(:id)
     @exercises = Exercise.where(customer_id: customer_ids).order(id: "DESC").page(params[:page]).per(10)
     followings_ids = current_customer.followings.pluck(:id)

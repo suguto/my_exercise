@@ -1,16 +1,18 @@
-<div class="btn-wrapper container">
-  <div class="row">
-    <h1>投稿一覧</h1>
-  </div>
-  <div class="content">
-    <div class="tab-wrap">
-      <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">みんなの投稿一覧</label>
-      <div class="tab-content">
-        <%= render 'index', exercises: @exercises %>
-      </div>
-      <input id="tab02" type="radio" name="tab" class="tab-switch"><label class="tab-label" for="tab02">タイムライン</label>
-      <div class="tab-content">
-        <%= render 'index', exercises: @exercise_timeline %>
+<div class="page-color">
+  <div class="btn-wrapper container">
+    <div class="row">
+      <h1>投稿一覧</h1>
+    </div>
+    <div class="content">
+      <div class="tab-wrap">
+        <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">みんなの投稿一覧</label>
+        <div class="tab-content">
+          <%= render 'index', exercises: @exercises %>
+        </div>
+        <input id="tab02" type="radio" name="tab" class="tab-switch"><label class="tab-label" for="tab02">タイムライン</label>
+        <div class="tab-content">
+          <%= render 'index', exercises: @exercise_timeline %>
+        </div>
       </div>
     </div>
   </div>

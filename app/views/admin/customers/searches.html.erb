@@ -1,66 +1,68 @@
-<div class="btn-wrapper container">
-  <div class="row">
-    <div class="col-12 mx-auto">
-      <h1>検索結果</h1>
-    </div>
-    <div class="col-12 mx-auto">
-      <p><%= @word %>の検索結果</p>
-      <% if @range == "ユーザー名" %>
-        <% if @customers.count == 0 %>
-          <p>見つかりませんでした。</p>
-        <% else %>
-          <table class="table">
-            <% @customers.each do |c| %>
-              <tr>
-                <th class="col-2">
-                  <%= link_to admin_customer_path(c), class: "text-dark" do %>
-                    <%= image_tag c.get_profile_image(100, 100) %>
-                  <% end %>
-                </th>
-                <td class="col-6">
-                  <%= link_to admin_customer_path(c), class: "text-dark" do %>
-                    <p><strong><%= c.name %></strong></p>
-                  <% end %>
-                  <%= c.introduction %>
-                </td>
-              </tr>
+  <div class="admin-page-color">
+    <div class="btn-wrapper container">
+      <div class="row">
+          <h1>検索結果</h1>
+        <div class="col-12 mx-auto">
+          <div class="content">
+          <h3 class="search-result"><strong>"<%= @word %>"</strong> の検索結果</h3>
+          <% if @range == "ユーザー名" %>
+            <% if @customers.count == 0 %>
+              <p>見つかりませんでした。</p>
+            <% else %>
+              <table class="table">
+                <% @customers.each do |c| %>
+                  <tr>
+                    <th class="col-2">
+                      <%= link_to admin_customer_path(c), class: "text-dark" do %>
+                        <%= image_tag c.get_profile_image(100, 100) %>
+                      <% end %>
+                    </th>
+                    <td class="col-6">
+                      <%= link_to admin_customer_path(c), class: "text-dark" do %>
+                        <p><strong><%= c.name %></strong></p>
+                      <% end %>
+                      <%= c.introduction %>
+                    </td>
+                  </tr>
+                <% end %>
+              </table>
+              <%= paginate @customers %>
             <% end %>
-          </table>
-          <%= paginate @customers %>
-        <% end %>
+        </div>
+          <% else %>
+            <% if @exercises.count == 0 %>
+              <p>見つかりませんでした。</p>
+            <% else %>
+              <div class="col-12 mx-auto">
+                <table class="table">
+                  <% @exercises.each do |e| %>
+                    <tr>
+                      <th>
+                        <%= link_to admin_customer_path(e.customer_id) do %>
+                          <%= image_tag e.customer.get_profile_image(50, 50) %>
+                        <% end %>
+                      </th>
+                      <td class="col-8">
+                        <p>
+                          <%= link_to admin_customer_path(e.customer_id), class: "text-dark" do %>
+                            <strong><%= e.customer.name %></strong>
+                          <% end %>
+                        </p>
+                        <p><%= e.body %></p>
+                          <% if e.body_images.present? %>
+                            <% e.body_images.each do |images| %>
+                              <%= image_tag e.get_body_images(images, 100, 100) %>
+                          <% end %>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </table>
+                </div>
+              </div>
+              <%= paginate @exercises %>
+            <% end %>
+          <% end %>
+      </div>
     </div>
-      <% else %>
-        <% if @exercises.count == 0 %>
-          <p>見つかりませんでした。</p>
-        <% else %>
-          <div class="col-12 mx-auto">
-            <table class="table">
-              <% @exercises.each do |e| %>
-                <tr>
-                  <th>
-                    <%= link_to admin_customer_path(e.customer_id) do %>
-                      <%= image_tag e.customer.get_profile_image(50, 50) %>
-                    <% end %>
-                  </th>
-                  <td class="col-8">
-                    <p>
-                      <%= link_to admin_customer_path(e.customer_id), class: "text-dark" do %>
-                        <strong><%= e.customer.name %></strong>
-                      <% end %>
-                    </p>
-                    <p><%= e.body %></p>
-                      <% if e.body_images.present? %>
-                        <% e.body_images.each do |images| %>
-                          <%= image_tag e.get_body_images(images, 100, 100) %>
-                      <% end %>
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </table>
-          </div>
-          <%= paginate @exercises %>
-        <% end %>
-      <% end %>
   </div>
-</div>
