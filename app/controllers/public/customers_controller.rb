@@ -4,7 +4,6 @@ class Public::CustomersController < ApplicationController
 
 
   def show
-    @index = true
     @customer = Customer.find(params[:id])
     @exercises = @customer.exercises.order(id: "DESC").page(params[:page]).per(5)
     exercise_ids = @customer.favorites.pluck(:exercise_id)

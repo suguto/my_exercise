@@ -2,7 +2,6 @@ class Public::FavoritesController < ApplicationController
   before_action :authenticate_customer!
 
   def favorites_all
-    @index = true
     exercises = Exercise.find(params[:exercise_id])
     favorites_ids = exercises.favorites.pluck(:customer_id)
     @customers = Customer.where(id: favorites_ids).order(id: "DESC").page(params[:page]).per(10)

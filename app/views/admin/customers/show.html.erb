@@ -1,34 +1,36 @@
-<div class="btn-wrapper container">
-  <div class="row">
-    <div class="col-12 mx-auto">
-      <h1><%= @customer.name %></h1>
-    </div>
-    <div class="col-12 mx-auto">
-      <table class="table">
-        <tr>
-          <th><p><%= image_tag @customer.get_profile_image(150, 100) %></p></th>
-        </tr>
-        <tr>
-          <th><%= @customer.introduction %></th>
-        </tr>
-        <tr>
-          <th><%= @customer.email %></th>
-        </tr>
-      </table>
-      <div class="col-10"><p>ユーザーの状態</p>
-        <div class="radio-inline">
-          <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
-            <div><%= f.radio_button :customer_style, "available" %>
-                 <%= f.label :customer_style, "ログイン可能" %>
-            </div>
-            <div><%= f.radio_button :customer_style, "quited" %>
-                 <%= f.label :customer_style, "退会済み" %>
-            </div>
-            <div><%= f.radio_button :customer_style, "block" %>
-                 <%= f.label :customer_style, "blockしています" %>
-            </div>
-            <div><%= f.submit "変更する", class: "btn btn-sm btn-danger", "data-confirm" =>"変更してもよろしいですか？" %></div>
-          <% end %>
+<div class="admin-page-color">
+  <div class="btn-wrapper container">
+    <div class="row">
+        <h1><%= @customer.name %></h1>
+      <div class="col-12 mx-auto">
+        <div class="content">
+        <table class="table">
+          <tr>
+            <th><p><%= image_tag @customer.get_profile_image(150, 100) %></p></th>
+          </tr>
+          <tr>
+            <th><%= @customer.introduction %></th>
+          </tr>
+          <tr>
+            <th><%= @customer.email %></th>
+          </tr>
+        </table>
+        </div>
+        <div class="col-10"><p class="admin-customer_style">ユーザーの状態</p>
+          <div class="radio-inline">
+            <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
+              <div><%= f.radio_button :customer_style, "available" %>
+                   <%= f.label :customer_style, "ログイン可能" %>
+              </div>
+              <div><%= f.radio_button :customer_style, "quited" %>
+                   <%= f.label :customer_style, "退会済み" %>
+              </div>
+              <div><%= f.radio_button :customer_style, "block" %>
+                   <%= f.label :customer_style, "blockしています" %>
+              </div>
+              <div><%= f.submit "変更する", class: "btn btn-sm btn-danger", "data-confirm" =>"変更してもよろしいですか？" %></div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

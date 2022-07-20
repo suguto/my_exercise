@@ -1,13 +1,15 @@
-<div class="btn-wrapper container">
-  <div class="row">
-    <h1>投稿詳細</h1>
-    <div class="col-12 mx-auto">
-      <div class="content">
-        <table class="table" id="comments_area">
-          <%= render 'public/comments/view_comment', exercise: @exercise %>
-        </table>
-        <div class="col-10 mx-auto text-right" id="new-comment">
-          <%= render 'public/comments/comment_form', comment: @comment_new, exercise: @exercise %>
+<div class="page-color">
+  <div class="btn-wrapper container">
+    <div class="row">
+      <h1>投稿詳細</h1>
+      <div class="col-12 mx-auto">
+        <div class="content">
+          <table class="table" id="comments_area">
+            <%= render 'public/comments/view_comment', exercise: @exercise %>
+          </table>
+          <div class="col-10 mx-auto text-right" id="new-comment">
+            <%= render 'public/comments/comment_form', comment: @comment_new, exercise: @exercise %>
+          </div>
         </div>
       </div>
     </div>

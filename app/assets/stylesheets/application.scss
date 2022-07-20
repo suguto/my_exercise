@@ -129,6 +129,9 @@
     margin: 20px;
 }
 
+.search-result{
+    padding: 15px 15px 15px 20px;
+}
 
 .search_form{
     width: 150px;
@@ -140,9 +143,9 @@
 
 /*flashメッセージ*/
 .notification {
-  text-align: center;
-  background-color: #66FF66;
-  color: white;
+    text-align: center;
+    background-color: #66FF66;
+    color: white;
 }
 
 h1{
@@ -173,14 +176,11 @@ body{
     position: relative;
     box-sizing: border-box;
 }
-
+/*login画面のflashメッセージが表示される時にレイアウトが崩れるため追加しました。*/
 main{
-    min-height: 100vh;
-    position: relative;
-    box-sizing: border-box;
     background-color: #EEEEEE;
-    background-size: cover;
 }
+
 
 
 /*footer*/
@@ -227,6 +227,54 @@ footer{
     background-color: white;
 }
 
-.exercise_index {
-  padding-bottom: 20px;
+
+.page-color{
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+    background-color: #EEEEEE;
+    background-size: cover;
+}
+
+.admin-page-color{
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+    background-color: #E6FFE9;
+    background-size: cover;
+}
+
+.admin-login{
+  width: 180px;
+  padding: 1rem 2rem;
+  border-top: 4px solid #d8dcdc;
+  border-right: 4px solid #666;
+  border-bottom: 4px solid #333;
+  border-left: 4px solid #868888;
+  border-radius: 0;
+  background-image: -webkit-linear-gradient(135deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+  background-image: linear-gradient(-45deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+}
+
+.admin-customer_style {
+    width: 300px;
+    font-size: 30px;
+    position: relative;
+    padding: 1rem .5rem;
+}
+
+.admin-customer_style:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    content: '';
+    border-radius: 3px;
+    background-image: -webkit-linear-gradient(right, #2af598 0%, #009efd 100%);
+    background-image: -moz-linear-gradient(right, #2af598 0%, #009efd 100%);
+    background-image: -o-linear-gradient(right, #2af598 0%, #009efd 100%);
+    background-image: linear-gradient(to left, #2af598 0%, #009efd 100%);
 }

@@ -28,7 +28,7 @@
 
         <% elsif admin_signed_in? %>
         <li class="nav-item">
-          <div class="header-list"><%= link_to "ユーザー一覧", admin_customers_path, class: 'nav-link primary text-right' %></div>
+          <div class="header-list"><%= link_to "ユーザー一覧", admin_customers_path, class: 'nav-link text-primary text-right' %></div>
         </li>
         <li class="nav-item">
           <div class="header-list"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-primary text-right' %></div>

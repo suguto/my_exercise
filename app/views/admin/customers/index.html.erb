@@ -1,27 +1,30 @@
-<div class="btn-wrapper container">
-  <div class="row">
-    <div class="col-12 mx-auto">
-      <h1>ユーザー一覧</h1>
-      <div class ="text-right"><%= render 'admin/customers/search_form' %></div>
-    </div>
-    <div class="col-12 mx-auto">
-      <table class="table">
-        <% @customers.each do |c| %>
-          <tr>
-            <th class="col-2">
-              <%= link_to admin_customer_path(c), class: "text-dark" do %>
-                <%= image_tag c.get_profile_image(100, 100) %>
-              <% end %>
-            </th>
-            <td class="col-6"><%= link_to admin_customer_path(c), class: "text-dark" do %>
-                      <p><strong><%= c.name %></strong></p>
-                              <% end %>
-                              <%= c.introduction %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-      <%= paginate @customers %>
+<div class="admin-page-color">
+  <div class="btn-wrapper container">
+    <div class="row">
+      <h1>ユーザー一覧</h1><br />
+      <div class="col-12 mx-auto">
+        <%= render 'admin/customers/search_form' %>
+        <div class="content">
+        <table class="table">
+          <% @customers.each do |c| %>
+            <tr>
+              <th class="col-2">
+                <%= link_to admin_customer_path(c), class: "text-dark" do %>
+                  <%= image_tag c.get_profile_image(100, 100) %>
+                <% end %>
+              </th>
+              <td class="col-6">
+                <%= link_to admin_customer_path(c), class: "text-dark" do %>
+                  <p><strong><%= c.name %></strong></p>
+                <% end %>
+                <%= c.introduction %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+        </div>
+        <%= paginate @customers %>
+      </div>
     </div>
   </div>
 </div>
