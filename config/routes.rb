@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
 
+    get '/notifications' => 'notifications#index'
+    delete 'notifications/destroy_all'
+
     patch 'customers/withdraw/:id' => 'customers#withdraw', as: 'withdraw'
     resources :customers, only: [:show, :edit, :update] do
 

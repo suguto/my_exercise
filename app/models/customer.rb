@@ -15,6 +15,9 @@ class Customer < ApplicationRecord
 
   has_many :follower_relationships, class_name: "Relationship", foreign_key: "following_id"
   has_many :followers, through: :follower_relationships, source: :follower
+  
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   validates :name, length: {in: 1..10}
   validates :introduction, length: {maximum: 300}
@@ -65,4 +68,16 @@ class Customer < ApplicationRecord
       @customer = Customer.all
     end
   end
+  
+  #通知機能（フォロー）
+  def create_notification_follow!(current_customer)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_customer.id, id, 'follow'])
+    if temp.blank?
+      notification = current_customer.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end  
+  end  
 end

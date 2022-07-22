@@ -18,7 +18,6 @@
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   color: #6c6b6b;
 }
 
 /*タブで切り替えるためのCSSです。customer_show,exercise_indexで使用しています。*/
@@ -98,7 +97,7 @@
 }
 /*ここまで*/
 
-
+/*ヘッダーの中身*/
 .header-list {
   display: inline-block;
   position: relative;
@@ -124,6 +123,18 @@
   transform: translate(0, 0);
 }
 
+.notification-bell{
+    font-size: 20px;
+}
+
+.notification-circle{
+    font-size: 10px;
+    position: absolute;
+    padding-left: 8px;
+    padding-bottom: 10px;
+}
+
+
 .search{
     width: 500px;
     margin: 20px;
@@ -140,6 +151,7 @@
 .header_title{
     font-family: cursive;
 }
+/*ここまで*/
 
 /*flashメッセージ*/
 .notification {
@@ -237,6 +249,21 @@ footer{
     background-size: cover;
 }
 
+
+.notification-box{
+    padding: 15px;
+    margin: 5px;
+    border: double 5px #4ec4d3;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.notification-show{
+    height: 80px;
+    margin: 10px 10px 30px 10px;
+}
+
+
 .admin-page-color{
     min-height: 100vh;
     position: relative;
@@ -278,3 +305,4 @@ footer{
     background-image: -o-linear-gradient(right, #2af598 0%, #009efd 100%);
     background-image: linear-gradient(to left, #2af598 0%, #009efd 100%);
 }
+

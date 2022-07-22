@@ -1,0 +1,21 @@
+<div class="page-color">
+  <div class="btn-wrapper container">
+    <div class="row">
+      <h1>通知</h1>
+      <div class="col-12 mx-auto text-right">
+        <%= link_to notifications_destroy_all_path, method: :delete ,class: "text-dark", "data-confirm" => "全件削除しますか？" do %>
+          <i class="fas fa-trash fa-2x"></i>全件削除
+        <% end %>
+      </div>
+      <div class="col-12 mx-auto">
+        <% notifications = @notifications.where.not(visitor_id: current_customer.id) %>
+        <% if notifications.exists? %>
+          <div><%= render notifications %></div>
+          <%= paginate notifications %>
+        <% else %>
+          <p>| 通知はありません。</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
