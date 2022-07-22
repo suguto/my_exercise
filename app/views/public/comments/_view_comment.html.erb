@@ -1,0 +1,41 @@
+        <tr>
+          <th>
+            <%= link_to customer_path(exercise.customer_id) do %>
+              <%= image_tag exercise.customer.get_profile_image(150, 150) %>
+            <% end %>
+          </th>
+          <td class="col-8">
+            <p><%= link_to customer_path(exercise.customer_id), class: "text-dark" do %>
+                 <strong><%= exercise.customer.name %></strong>
+               <% end %>
+            </p>
+          <p><%= link_to exercise.body, exercise_path(exercise), class: "text-secondary" %></p>
+            <% if exercise.body_images.present? %>
+              <% exercise.body_images.each do |images| %>
+                <%= image_tag exercise.get_body_images(images, 100, 100) %>
+              <% end %>
+            <% end %>
+          </td>
+          <% if exercise.customer_id == current_customer.id %>
+            <td><p><%= link_to "編集", edit_exercise_path(exercise), class: "btn btn-sm btn-success" %></p>
+              <%= link_to "削除", exercise_path(exercise), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "削除しますか？" %>
+            </td>
+          <% end %>
+        </tr>
+        <% if exercise.comments.exists? %>
+        <tr>
+          <th>投稿に対するコメント:<%= exercise.comments.count %></th>
+        </tr>
+          <% exercise.comments.each do |e| %>
+            <tr class="col-10">
+              <th class="text-right"><%= image_tag e.customer.get_profile_image(70, 70) %></th>
+              <td>
+                <p><strong><%= link_to e.customer.name, customer_path(e.customer), class: "text-dark" %></strong></p>
+                              <%= e.comment_to %>
+              </td>
+              <% if e.customer_id == current_customer.id %>
+                <td class="text-right"><%= link_to "削除", exercise_comment_path(exercise, e), class: "btn btn-sm btn-danger", "data-confirm" => "削除しますか？", method: :delete, remote: true %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>

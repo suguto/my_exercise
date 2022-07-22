@@ -1,0 +1,21 @@
+<% if exercise.favorited_by?(current_customer) %>
+  <%= link_to exercise_favorites_path(exercise), class: "text-danger", method: :delete, remote: true do %>
+    <%= image_tag 'マッチョアイコン5.jpeg' %>
+  <% end %>
+  <%= link_to exercise_favorites_all_path(exercise), class: "text-info" do %>
+    <% if exercise.favorites.count != 0 %>
+      <%= exercise.favorites.count %>
+    <% end %>
+  <% end %>
+
+
+<% else %>
+  <%= link_to exercise_favorites_path(exercise), class: "text-danger", method: :post, remote: true do %>
+    <%= image_tag 'マッチョのイラスト4.jpeg' %>
+  <% end %>
+  <%= link_to exercise_favorites_all_path(exercise), class: "text-info" do %>
+    <% if exercise.favorites.count != 0 %>
+      <%= exercise.favorites.count %>
+    <% end %>
+  <% end %>
+<% end %>

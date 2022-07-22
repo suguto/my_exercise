@@ -1,0 +1,308 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+/*タブで切り替えるためのCSSです。customer_show,exercise_indexで使用しています。*/
+.tab-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin:20px 0;
+}
+.tab-wrap:after {
+  content: '';
+  width: 100%;
+  height: 3px;
+  background: #325A8C;
+  display: block;
+  order: -1;
+}
+.tab-label {
+  color: #A16EFF;
+  background: LightGray;
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: center;
+  padding: 10px .5em;
+  order: -1;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+  flex: 1;
+}
+.tab-label:not(:last-of-type) {
+  margin-right: 5px;
+}
+.tab-content {
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+.tab-switch:checked+.tab-label {
+  background: #325A8C;
+}
+.tab-switch:checked+.tab-label+.tab-content {
+  height: auto;
+  overflow: auto;
+  padding: 15px;
+  opacity: 1;
+  transition: .5s opacity;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+.tab-switch {
+  display: none;
+}
+
+.tab-switch:checked+.tab-label {
+    background: #B1F9D0;
+    margin-top: -0.5rem;
+    transition: margin .3s;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.tab-label{
+    border-radius: 0;
+    position: relative;
+}
+.tab-label:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: '';
+    width: 0;
+    border-width: 0 16px 16px 0;
+    border-style: solid;
+    border-color: #fff #fff #ddd #ddd;
+    box-shadow: -1px 1px 2px rgba(0, 0, 0, .1);
+}
+/*ここまで*/
+
+/*ヘッダーの中身*/
+.header-list {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  text-align: right;
+}
+
+.header-list:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  transform: translate(-100%, 0);
+  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s;
+  content: "";
+}
+
+.header-list:hover:after {
+  transform: translate(0, 0);
+}
+
+.notification-bell{
+    font-size: 20px;
+}
+
+.notification-circle{
+    font-size: 10px;
+    position: absolute;
+    padding-left: 8px;
+    padding-bottom: 10px;
+}
+
+
+.search{
+    width: 500px;
+    margin: 20px;
+}
+
+.search-result{
+    padding: 15px 15px 15px 20px;
+}
+
+.search_form{
+    width: 150px;
+}
+
+.header_title{
+    font-family: cursive;
+}
+/*ここまで*/
+
+/*flashメッセージ*/
+.notification {
+    text-align: center;
+    background-color: #66FF66;
+    color: white;
+}
+
+h1{
+    padding: 1.65rem 2rem;
+    background-color: rgba(165, 210, 255, .4);
+    background-image:
+    linear-gradient(90deg, rgba(165, 210, 255, .3) 50%, transparent 50%),
+    linear-gradient(rgba(165, 210, 255, .3) 50%, transparent 50%);
+    background-size: 40px 40px;
+}
+
+.login-title{
+    font-size: 3.4rem;
+    font-style: italic;
+    letter-spacing: .1em;
+    color: #fff;
+    text-shadow: -4px 3px 0 #fa4141, -8px 6px 0 #000;}
+
+.signup-title{
+    font-size: 3.4rem;
+    font-style: italic;
+    letter-spacing: .1em;
+    color: #000000;
+    text-shadow: -4px 3px 0 #fa4141, -8px 6px 0 #000;}
+
+body{
+    min-height: 100vh;
+    position: relative;
+    box-sizing: border-box;
+}
+/*login画面のflashメッセージが表示される時にレイアウトが崩れるため追加しました。*/
+main{
+    background-color: #EEEEEE;
+}
+
+
+
+/*footer*/
+footer{
+    width: 100%;
+    height: 120px;
+    text-align: center;
+    line-height: 120px;
+    background-color: #FFFFEE;
+
+}
+
+
+#top{
+  position: relative;
+  padding: 1rem 3rem;
+  color: #fff;
+  border-radius: 100vh;
+  background-image: -webkit-gradient(linear, right top, left top, from(#9be15d), to(#00e3ae));
+  background-image: -webkit-linear-gradient(right, #9be15d 0%, #00e3ae 100%);
+  background-image: linear-gradient(to left, #9be15d 0%, #00e3ae 100%);
+}
+
+.main-top{
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+    background-image: image-url('jonathan-borba-zfPOelmDc-M-unsplash.jpg');
+    background-size: cover;
+}
+
+.top-sentence{
+    width: 400px;
+    padding: 20px;
+    color: #EEE8AA;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+}
+
+.content{
+    background-color: white;
+}
+
+
+.page-color{
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+    background-color: #EEEEEE;
+    background-size: cover;
+}
+
+
+.notification-box{
+    padding: 15px;
+    margin: 5px;
+    border: double 5px #4ec4d3;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.notification-show{
+    height: 80px;
+    margin: 10px 10px 30px 10px;
+}
+
+
+.admin-page-color{
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+    background-color: #E6FFE9;
+    background-size: cover;
+}
+
+.admin-login{
+  width: 180px;
+  padding: 1rem 2rem;
+  border-top: 4px solid #d8dcdc;
+  border-right: 4px solid #666;
+  border-bottom: 4px solid #333;
+  border-left: 4px solid #868888;
+  border-radius: 0;
+  background-image: -webkit-linear-gradient(135deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+  background-image: linear-gradient(-45deg, #ccc 0%, #868888 20%, #d8dcdc 34%, white 53%, #ccc 100%);
+}
+
+.admin-customer_style {
+    width: 300px;
+    font-size: 30px;
+    position: relative;
+    padding: 1rem .5rem;
+}
+
+.admin-customer_style:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    content: '';
+    border-radius: 3px;
+    background-image: -webkit-linear-gradient(right, #2af598 0%, #009efd 100%);
+    background-image: -moz-linear-gradient(right, #2af598 0%, #009efd 100%);
+    background-image: -o-linear-gradient(right, #2af598 0%, #009efd 100%);
+    background-image: linear-gradient(to left, #2af598 0%, #009efd 100%);
+}
+

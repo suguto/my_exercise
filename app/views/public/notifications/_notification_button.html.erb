@@ -1,0 +1,6 @@
+<%= link_to notifications_path do %>
+  <% if unchecked_notifications.any? %>
+    <div class="notification-circle"><i class="fas fa-circle" style="color: gold;"></i></div>
+  <% end %>
+    <div class="notification-bell"><i class="far fa-bell" style="color: white;"></i></div>
+<% end %>

@@ -10,32 +10,41 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
 
+  devise_scope :customer do
+    post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   scope module: :public do
-    patch 'customers/withdraw'
+
+    get '/notifications' => 'notifications#index'
+    delete 'notifications/destroy_all'
+
+    patch 'customers/withdraw/:id' => 'customers#withdraw', as: 'withdraw'
     resources :customers, only: [:show, :edit, :update] do
-      
+
       get '/followings' => 'relationships#followings'
       get '/followers' => 'relationships#followers'
-      resources :relationships, only: [:create, :destroy]
-      
-    end
+      resource :relationships, only: [:create, :destroy]
 
+    end
     resources :exercises do
-      
+
       resources :comments, only: [:create, :destroy]
-      
-      resources :favorites, only: [:index, :create, :destroy]
+
+      resource :favorites, only: [:create, :destroy]
+      get 'favorites_all' => 'favorites#favorites_all', as: 'favorites_all'
 
     end
-    
+
     get '/ranking' => 'favorites#ranking'
-    
+
     resources :searches, only: [:index]
 
   end
 
-    namespace :admin do
-    resources :customers, only: [:index, :show, :edit, :update]
+  namespace :admin do
+    get '/searches' => 'customers#searches'
+    resources :customers, only: [:index, :show, :update]
   end
 
   root to: 'homes#top'

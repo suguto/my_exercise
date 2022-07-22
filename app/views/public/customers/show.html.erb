@@ -1,2 +1,47 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="page-color">
+  <div class="btn-wrapper container">
+    <div class="row">
+      <h1><%= @customer.name %></h1>
+      <div class="col-12 mx-auto">
+        <table class="table">
+          <tr>
+            <th><p><%= image_tag @customer.get_profile_image(150, 100) %></p>
+                <%= link_to customer_followings_path(@customer), class: "text-info" do %>
+                  フォロー数<%= @customer.followings.count %>
+                <% end %>
+                <%= link_to customer_followers_path(@customer), class: "text-info" do %>
+                  フォロワー数<%= @customer.followers.count %>
+                <% end %>
+            </th>
+            <% if @customer == current_customer %>
+              <% if @customer.name != "guest" %>
+                <td class="text-right"><%= link_to "Edit profole", edit_customer_path(current_customer), class: "btn btn-sm btn-success" %></td>
+              <% end %>
+            <% else %>
+                <td id="follow_buttons_<%= @customer.id %>">
+                  <%= render 'public/relationships/follow_buttons', customer: @customer %>
+                </td>
+            <% end %>
+          </tr>
+          <tr>
+            <th><%= @customer.introduction %></th>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="content">
+      <div class="tab-wrap">
+        <input id="tab01" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab01">投稿一覧</label>
+        <div class="tab-content">
+          <%= render 'public/exercises/index', exercises: @exercises %>
+        </div>
+        <input id="tab02" type="radio" name="tab" class="tab-switch"><label class="tab-label" for="tab02">いいね一覧</label>
+          <div class="tab-content">
+          <div class="col-12 mx-auto">
+            <%= render 'public/exercises/index', exercises: @favorites %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

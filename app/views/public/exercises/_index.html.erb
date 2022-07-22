@@ -1,0 +1,36 @@
+<div class="col-12 mx-auto">
+  <div class="content">
+    <table class="table">
+      <% exercises.each do |e| %>
+        <tr>
+          <th>
+            <%= link_to customer_path(e.customer_id) do %>
+              <%= image_tag e.customer.get_profile_image(50, 50) %>
+            <% end %>
+          </th>
+          <td class="col-8">
+            <p><%= link_to customer_path(e.customer_id), class: "text-dark" do %>
+              <strong><%= e.customer.name %></strong>
+               <% end %>
+            </p>
+            <p><%= link_to e.body, exercise_path(e), class: "text-secondary" %></p>
+              <% if e.body_images.present? %>
+                <% e.body_images.each do |images| %>
+                  <%= image_tag e.get_body_images(images, 100, 100) %>
+                <% end %>
+              <% end %>
+          </td>
+          <td class="favorite_buttons_<%= e.id %>">
+            <%= render 'public/favorites/favorite', exercise: e %>
+          </td>
+          <% if e.customer_id == current_customer.id %>
+            <td><p><%= link_to "編集", edit_exercise_path(e), class: "btn btn-sm btn-success" %></p>
+                <%= link_to "削除", exercise_path(e), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "削除しますか？" %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<%= paginate exercises %>

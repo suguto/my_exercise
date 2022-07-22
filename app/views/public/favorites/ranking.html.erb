@@ -1,2 +1,8 @@
-<h1>Public::Favorites#ranking</h1>
-<p>Find me in app/views/public/favorites/ranking.html.erb</p>
+<div class="page-color">
+  <div class="btn-wrapper container">
+    <div class="row">
+      <h1>ランキング</h1>
+      <%= render 'public/exercises/index', exercises: @favorites_ranking %>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,37 @@
-<h1>Public::Exercises#new</h1>
-<p>Find me in app/views/public/exercises/new.html.erb</p>
+<div class="page-color">
+  <div class="btn-wrapper container">
+    <div class="row">
+      <h1>新規投稿</h1>
+      <div class="col-12 mx-auto">
+        <%= render 'layouts/error_message', error_content: @exercise %>
+        <%= form_with model: @exercise, url: exercises_path(@exercise), method: :post do |f| %>
+          <div class="content">
+            <table class="table">
+              <tr>
+                <%# 新規会員登録して最初に新規投稿ページに移動すると画像表示エラーが出るため、解決策としてif文で分岐しました %>
+                <% if current_customer.profile_image.attached? %>
+                  <th><%= image_tag current_customer.get_profile_image(100, 100) %>
+                    <strong><%= current_customer.name %></strong>
+                  </th>
+                <% else %>
+                  <th><%= image_tag asset_path('/assets/box3.jpg'), size: "100x67" %>
+                    <strong><%= current_customer.name %></strong>
+                  </th>
+                <% end %>
+              </tr>
+              <tr>
+                <th><%= f.text_area :body, class: "form-control", placeholder: "どんな運動や食事しましたか？" %></th>
+              </tr>
+              <tr>
+                <th><%= f.file_field :body_images, accept: "image/*", multiple: true %></th>
+              </tr>
+              <tr>
+                <th class="text-right"><%= f.submit "投稿する", class: "btn btn-sm btn-primary" %></th>
+              </tr>
+            </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
