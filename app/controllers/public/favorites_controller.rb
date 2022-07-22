@@ -16,6 +16,8 @@ class Public::FavoritesController < ApplicationController
     @exercise = Exercise.find(params[:exercise_id])
     favorite = current_customer.favorites.new(exercise_id: @exercise.id)
     favorite.save
+    @exercise.create_notification_favorite!(current_customer)
+
   end
 
   def destroy

@@ -33,7 +33,9 @@
                 <p><strong><%= link_to e.customer.name, customer_path(e.customer), class: "text-dark" %></strong></p>
                               <%= e.comment_to %>
               </td>
-              <td class="text-right"><%= link_to "削除", exercise_comment_path(exercise, e), class: "btn btn-sm btn-danger", "data-confirm" => "削除しますか？", method: :delete, remote: true %></td>
+              <% if e.customer_id == current_customer.id %>
+                <td class="text-right"><%= link_to "削除", exercise_comment_path(exercise, e), class: "btn btn-sm btn-danger", "data-confirm" => "削除しますか？", method: :delete, remote: true %></td>
+              <% end %>
             </tr>
           <% end %>
         <% end %>
