@@ -61,7 +61,6 @@ group :production do
 end
 
 gem 'devise'
-gem 'pry-rails'
 gem 'kaminari'
 gem 'jquery-rails'
 gem 'enum_help'
@@ -70,3 +69,10 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 
 
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'pry-rails'
+  gem 'pry-byebug'
+end
