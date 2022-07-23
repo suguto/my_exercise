@@ -67,6 +67,8 @@ gem 'enum_help'
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'bootstrap'
+gem 'font-awesome-sass'
 
 
 group :development, :test do
