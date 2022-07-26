@@ -3,9 +3,9 @@
 
 
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /*タブで切り替えるためのCSSです。customer_show,exercise_indexで使用しています。*/
@@ -61,27 +61,27 @@
 }
 
 .tab-switch:checked+.tab-label {
-    background: #B1F9D0;
-    margin-top: -0.5rem;
-    transition: margin .3s;
-    align-items: center;
-    display: flex;
-    justify-content: center;
+  background: #B1F9D0;
+  margin-top: -0.5rem;
+  transition: margin .3s;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 .tab-label{
-    border-radius: 0;
-    position: relative;
+  border-radius: 0;
+  position: relative;
 }
 .tab-label:after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    content: '';
-    width: 0;
-    border-width: 0 16px 16px 0;
-    border-style: solid;
-    border-color: #fff #fff #ddd #ddd;
-    box-shadow: -1px 1px 2px rgba(0, 0, 0, .1);
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: '';
+  width: 0;
+  border-width: 0 16px 16px 0;
+  border-style: solid;
+  border-color: #fff #fff #ddd #ddd;
+  box-shadow: -1px 1px 2px rgba(0, 0, 0, .1);
 }
 /*ここまで*/
 
@@ -112,85 +112,82 @@
 }
 
 .notification-bell{
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .notification-circle{
-    font-size: 10px;
-    position: absolute;
-    padding-left: 8px;
-    padding-bottom: 10px;
+  font-size: 10px;
+  position: absolute;
+  padding-left: 8px;
+  padding-bottom: 10px;
 }
 
-
 .search{
-    width: 500px;
-    margin: 20px;
+  width: 500px;
+  margin: 20px;
 }
 
 .search-result{
-    padding: 15px 15px 15px 20px;
+  padding: 15px 15px 15px 20px;
 }
 
 .search_form{
-    width: 150px;
+  width: 150px;
 }
 
 .header_title{
-    font-family: cursive;
+  font-family: cursive;
 }
 /*ここまで*/
 
 /*flashメッセージ*/
 .notification {
-    text-align: center;
-    background-color: #66FF66;
-    color: white;
+  text-align: center;
+  background-color: #66FF66;
+  color: white;
 }
 
 h1{
-    padding: 1.65rem 2rem;
-    background-color: rgba(165, 210, 255, .4);
-    background-image:
-    linear-gradient(90deg, rgba(165, 210, 255, .3) 50%, transparent 50%),
-    linear-gradient(rgba(165, 210, 255, .3) 50%, transparent 50%);
-    background-size: 40px 40px;
+  padding: 1.65rem 2rem;
+  background-color: rgba(165, 210, 255, .4);
+  background-image:
+  linear-gradient(90deg, rgba(165, 210, 255, .3) 50%, transparent 50%),
+  linear-gradient(rgba(165, 210, 255, .3) 50%, transparent 50%);
+  background-size: 40px 40px;
 }
 
 .login-title{
-    font-size: 3.4rem;
-    font-style: italic;
-    letter-spacing: .1em;
-    color: #fff;
-    text-shadow: -4px 3px 0 #fa4141, -8px 6px 0 #000;}
+  font-size: 3.4rem;
+  font-style: italic;
+  letter-spacing: .1em;
+  color: #fff;
+  text-shadow: -4px 3px 0 #fa4141, -8px 6px 0 #000;
+}
 
 .signup-title{
-    font-size: 3.4rem;
-    font-style: italic;
-    letter-spacing: .1em;
-    color: #000000;
-    text-shadow: -4px 3px 0 #fa4141, -8px 6px 0 #000;}
+  font-size: 3.4rem;
+  font-style: italic;
+  letter-spacing: .1em;
+  color: #000000;
+  text-shadow: -4px 3px 0 #fa4141, -8px 6px 0 #000;}
 
 body{
-    min-height: 100vh;
-    position: relative;
-    box-sizing: border-box;
+  min-height: 100vh;
+  position: relative;
+  box-sizing: border-box;
 }
 /*login画面のflashメッセージが表示される時にレイアウトが崩れるため追加しました。*/
 main{
-    background-color: #EEEEEE;
+  background-color: #EEEEEE;
 }
-
-
 
 /*footer*/
 footer{
-    width: 100%;
-    height: 120px;
-    text-align: center;
-    line-height: 120px;
-    background-color: #FFFFEE;
-
+  width: 100%;
+  height: 120px;
+  text-align: center;
+  line-height: 120px;
+  background-color: #FFFFEE;
 }
 
 
@@ -205,60 +202,57 @@ footer{
 }
 
 .main-top{
-    min-height: 100vh;
-    position: relative;
-    padding-bottom: 120px;
-    box-sizing: border-box;
-    background-image: url('/images/jonathan-borba-zfPOelmDc-M-unsplash.jpg');
-    background-size: cover;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+  background-image: url('/images/jonathan-borba-zfPOelmDc-M-unsplash.jpg');
+  background-size: cover;
 }
 
 .top-sentence{
-    width: 400px;
-    padding: 20px;
-    color: #EEE8AA;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-
+  width: 400px;
+  padding: 20px;
+  color: #EEE8AA;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .content{
-    background-color: white;
+  background-color: white;
 }
 
-
 .page-color{
-    min-height: 100vh;
-    position: relative;
-    padding-bottom: 120px;
-    box-sizing: border-box;
-    background-color: #EEEEEE;
-    background-size: cover;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+  background-color: #EEEEEE;
+  background-size: cover;
 }
 
 
 .notification-box{
-    padding: 15px;
-    margin: 5px;
-    border: double 5px #4ec4d3;
-    border-radius: 10px;
-    background-color: white;
+  padding: 15px;
+  margin: 5px;
+  border: double 5px #4ec4d3;
+  border-radius: 10px;
+  background-color: white;
 }
 
 .notification-show{
-    height: 80px;
-    margin: 10px 10px 30px 10px;
+  height: 80px;
+  margin: 10px 10px 30px 10px;
 }
 
-
 .admin-page-color{
-    min-height: 100vh;
-    position: relative;
-    padding-bottom: 120px;
-    box-sizing: border-box;
-    background-color: #EEEEEE;
-    background-size: cover;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+  background-color: #EEEEEE;
+  background-size: cover;
 }
 
 .admin-login{
@@ -274,22 +268,22 @@ footer{
 }
 
 .admin-customer_style {
-    width: 300px;
-    font-size: 30px;
-    position: relative;
-    padding: 1rem .5rem;
+  width: 300px;
+  font-size: 30px;
+  position: relative;
+  padding: 1rem .5rem;
 }
 
 .admin-customer_style:after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    content: '';
-    border-radius: 3px;
-    background-image: -webkit-linear-gradient(right, #2af598 0%, #009efd 100%);
-    background-image: -moz-linear-gradient(right, #2af598 0%, #009efd 100%);
-    background-image: -o-linear-gradient(right, #2af598 0%, #009efd 100%);
-    background-image: linear-gradient(to left, #2af598 0%, #009efd 100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  content: '';
+  border-radius: 3px;
+  background-image: -webkit-linear-gradient(right, #2af598 0%, #009efd 100%);
+  background-image: -moz-linear-gradient(right, #2af598 0%, #009efd 100%);
+  background-image: -o-linear-gradient(right, #2af598 0%, #009efd 100%);
+  background-image: linear-gradient(to left, #2af598 0%, #009efd 100%);
 }

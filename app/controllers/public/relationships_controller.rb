@@ -21,5 +21,4 @@ class Public::RelationshipsController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     current_customer.unfollow!(@customer)
   end
-
 end

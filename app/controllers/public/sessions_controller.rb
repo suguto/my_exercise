@@ -3,12 +3,12 @@
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :customer_state, only: [:create]
-
-    def guest_sign_in
-      customer = Customer.guest
-      sign_in customer
-      redirect_to customer_path(customer), notice: 'guestでログインしました'
-    end
+  #guestログインのためのメソッド
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    redirect_to customer_path(customer), notice: 'guestでログインしました'
+  end
   # GET /resource/sign_in
   # def new
   #   super
@@ -36,7 +36,7 @@ class Public::SessionsController < Devise::SessionsController
 
         #quited = 1 で退会済みなのでインできません
       elsif @customer.customer_style == "quited"
-        flash[:notice] = "新しく登録してください"
+        flash[:notice] = "退会済みなので新しく登録してください"
         redirect_to new_customer_registration_path
 
         #block = 2　なので、インできません
