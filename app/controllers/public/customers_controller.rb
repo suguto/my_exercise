@@ -2,7 +2,6 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
   before_action :secure_customer, only: [:edit]
 
-
   def show
     @customer = Customer.find(params[:id])
     @exercises = @customer.exercises.order(id: "DESC").page(params[:page]).per(5)
@@ -40,8 +39,7 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     #ゲストログインでマイページ編集ページに飛べないようにする
     if @customer.name == "guest"
-      redirect_to customer_path(current_customer), notice: "guestはプロフィール編集ページへ遷移できません"
-
+      redirect_to customer_path(current_customer), notice: "guestのプロフィール編集ページへ遷移できません"
     #他のcustomerの編集ページへ遷移できないようにする
     elsif
       @customer != current_customer
