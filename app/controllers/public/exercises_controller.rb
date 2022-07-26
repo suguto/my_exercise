@@ -16,7 +16,6 @@ class Public::ExercisesController < ApplicationController
   def show
     @exercise = Exercise.find(params[:id])
     @comment_new = Comment.new
-
   end
 
   def edit
@@ -57,11 +56,11 @@ class Public::ExercisesController < ApplicationController
     params.require(:exercise).permit(:body, body_images: [])
   end
 
-  #自分の投稿内容以外に飛べないようにするメソッド
+  #自分の投稿編集画面以外に飛べないようにするメソッド
   def secure_exercise
     @exercise = Exercise.find(params[:id])
-      if @exercise.customer_id != current_customer.id
-        redirect_to exercises_path
-      end
+    if @exercise.customer_id != current_customer.id
+      redirect_to exercises_path
+    end
   end
 end

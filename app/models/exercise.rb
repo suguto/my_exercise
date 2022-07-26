@@ -86,6 +86,4 @@ class Exercise < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-
-
 end

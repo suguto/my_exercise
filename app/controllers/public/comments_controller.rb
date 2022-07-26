@@ -7,7 +7,6 @@ class Public::CommentsController < ApplicationController
     if @comment.save
       @comment.exercise.create_notification_comment!(current_customer, @comment.id)
       render 'exercise_show_comments'
-
     else
       @comment_new = Comment.new
       flash[:notice] = "コメントを入力してください"
@@ -27,5 +26,4 @@ class Public::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment_to)
   end
-
 end
